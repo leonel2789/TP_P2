@@ -1,48 +1,46 @@
-
 $(document).ready(function () {
-    function traerAutos() {
+    function traerReparacion() {
         $.ajax({
             type: "GET",
-            url: "/autos",
+            url: "/reparacion",
             dataType: "json",
             success: function (data) {
-                $.each(data, function (index, Auto) {
-                    var row = $("<tr>").appendTo($("#gridAuto tbody"));
-                    $("<td>").text(Auto.id).appendTo(row);
-                    $("<td>").text(Auto.patente).appendTo(row);
-                    $("<td>").text(Auto.modelo).appendTo(row);
-                    $("<td>").text(Auto.color).appendTo(row);
+
+                $.each(data, function (index, Reparacion) {
+                    var row = $("<tr>").appendTo($("#gridReparacion tbody"));
+                    $("<td>").text(Reparacion.id).appendTo(row);
+                    $("<td>").text(Reparacion.descripcion).appendTo(row);
                     var botonModificar = $("<button>").text("Modificar");
                     botonModificar.click(function () {
-                        window.location.href = "modificarAuto.html" + "?id=" + Auto.id;
+                        window.location.href = "modificarReparacion.html" + "?id=" + Reparacion.id;
                     });
                     $("<td>").append(botonModificar).appendTo(row);
                     var botonEliminar = $("<button>").text("Eliminar");
                     botonEliminar.click(function () {
-                        fetch('/autos/borrar/' + Auto.id, {
+                        fetch('/reparacion/borrar/' + Reparacion.id, {
                             method: 'DELETE',
                         })
                             .then(response => {
                                 if (response.ok) {
-                                    alert("Auto fue eliminado con exito.");
-                                    window.location.href = "htmlAuto.html"
+                                    alert("Reparacion fue eliminado con exito.");
+                                    window.location.href = "htmlReparacion.html"
                                 } else {
-                                    alert("Auto fallo al intentar ser eliminado.");
-                                    window.location.href = "htmlAuto.html"
+                                    alert("Reparacion fallo al intentar ser eliminado.");
+                                    window.location.href = "htmlReparacion.html"
                                 }
                             })
                             .catch(error => {
                                 console.error('Error:', error);
-                                alert("Un error ocurrio al eliminar Auto.");
+                                alert("Un error ocurrio al eliminar Reparacion.");
                             });
                     });
                     $("<td>").append(botonEliminar).appendTo(row);
                 });
             },
             error: function () {
-                alert("Falla al traer Autos.");
+                alert("Falla al traer Reparacion.");
             }
         });
     }
-    traerAutos();
+    traerReparacion();
 });

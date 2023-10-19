@@ -10,7 +10,7 @@ public class Empleado{
     private String id;
     private String nombre;
     private String apellido;
-    private Integer DNI;
+    private String DNI;
 
     public String getId() {
         return id;
@@ -36,12 +36,11 @@ public class Empleado{
         this.apellido = apellido;
     }
 
-    public Integer getDNI() {
+    public String getDNI() {
         return DNI;
     }
 
-    public void setDNI(Integer DNI) {
+    public void setDNI(String DNI) {
         this.DNI = DNI;
     }
-
 }

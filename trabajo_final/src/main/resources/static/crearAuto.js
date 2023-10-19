@@ -19,8 +19,10 @@ function crearAuto() {
         .then(response => {
             if (response.ok) {
                 alert("Auto fue creado con exito.");
+                window.location.href = "htmlAuto.html"
             } else {
                 alert("Auto fallo al intentar crearse.");
+                window.location.href = "htmlAuto.html"
             }
         })
         .catch(error => {

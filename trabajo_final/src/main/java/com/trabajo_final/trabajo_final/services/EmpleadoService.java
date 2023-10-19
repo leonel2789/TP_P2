@@ -35,7 +35,6 @@ public class EmpleadoService {
         existingEmpleado.setNombre(updatedEmpleado.getNombre());
         existingEmpleado.setApellido(updatedEmpleado.getApellido());
         existingEmpleado.setDNI(updatedEmpleado.getDNI());
-        //existingEmpleado.setAutosId(updatedEmpleado.getAutosId());
 
         return empleadoRepository.save(existingEmpleado);
     }
